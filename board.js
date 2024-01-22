@@ -21,4 +21,12 @@ class Board{
         return res;
     }
 
+    checkWins() { // is a bug will eventually get the lines we bet on
+        let res = "";
+        this.rows.forEach(row => res += row.checkWins());
+        return res;
+    }
+
 }
+
+export default Board;

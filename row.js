@@ -49,3 +49,5 @@ class Row{
         return this.rowArr[0];
     }
 }
+
+export default Row;
