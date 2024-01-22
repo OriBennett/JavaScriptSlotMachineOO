@@ -14,7 +14,7 @@ class IOMgr {
         }
 
         IOMgr.instance = this;
-        this._prompt= 
+    //    this._prompt= 
     }
 
     printMsg(msg){
