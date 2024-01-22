@@ -12,5 +12,24 @@ class IOMgr {
         if (IOMgr.instance) {
             return IOMgr.instance;
         }
+
+        IOMgr.instance = this;
+        this._prompt= 
     }
+
+    printMsg(msg){
+        console.log(msg);
+    }
+
+    getDeposit(){
+        while(true) {
+            let depositAmount = this._prompt()
+        }
+    }
+
+    getBet(){}
+
+    getNumberOfLines(){}
+
+    getPlayAgain(){}
 }
