@@ -13,7 +13,7 @@ class Row{
     static {
         Row.symbols = [];
         for(const [symbol, count] of Object.entries(Row._SYMBOLS_COUNT)){
-            for(le i = 0; i < count; i++){
+            for(let i = 0; i < count; i++){
                 Row._symbols.push(symbol);
             }
         }
