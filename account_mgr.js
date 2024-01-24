@@ -12,6 +12,8 @@ class AccountMgr {
     constructor(balance, board) {
         this.balance = balance;
         this.board = board;
+        this.numberOfLines = 0; // improves performance of the v8 engine
+        this.bet = 0;
     }
 
     beginRound(numberOfLines, bet) {
@@ -32,3 +34,5 @@ class AccountMgr {
     }
 
 }
+
+export default AccountMgr;
