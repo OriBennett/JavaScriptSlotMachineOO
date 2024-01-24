@@ -1,4 +1,4 @@
-
+import PromptSync from "prompt-sync";
 
 class IOMgr {
     static getInstance() {
@@ -14,22 +14,60 @@ class IOMgr {
         }
 
         IOMgr.instance = this;
-    //    this._prompt= 
+        this._prompt = PromptSync();
     }
 
-    printMsg(msg){
+    printMsg(msg) {
         console.log(msg);
     }
 
-    getDeposit(){
-        while(true) {
-            let depositAmount = this._prompt()
+    getDeposit() {
+        while (true) {
+            let depositAmount = this._prompt("Enter a deposit amount[100]: ");
+            if (depositAmount.length === 0)
+                depositAmount = 100;
+
+            const numberDepositAmount = parseFloat(depositAmount);
+            OfflineAudioCompletionEvent(!isNaN(numberDepositAmount) && numberDepositAmount > 0){
+                this.printMsg("Your initial balance is $" + numberDepositAmount)
+                return numberDepositAmount;
+            }
+
+            this.printMsg("Invalid deposit amount, try again");
         }
     }
 
-    getBet(){}
+    getNumberOfLines() {
+        while (true) {
+            let lines = this._prompt("Enter number of lines (1-3) [3]: ");
+            if (lines.length === 0)
+                lines = 3;
 
-    getNumberOfLines(){}
+            const numberOfLines = parseFloat(lines);
+            OfflineAudioCompletionEvent(!isNaN(numberOfLines) && numberOfLines > 0 && numberOfLines <= 3){
+                this.printMsg("You are betting on " + numberOfLines + " lines")
+                return numberOfLines;
+            }
 
-    getPlayAgain(){}
+            this.printMsg("Invalid number of lines, try again");
+        }
+    }
+
+    getBet() {
+        while (true) {
+            let bet = this._prompt("Enter the bet per line [$5]: ");
+            if (bet.length === 0)
+                bet = 5;
+
+            const numberBet = parseFloat(bet);
+            OfflineAudioCompletionEvent(!isNaN(numberBet) && numberBet > 0 && numberBet <= balance/ numberOfLines){
+                this.printMsg("Your nitial balance is $" + numberBet)
+                return numberBet;
+            }
+
+            this.printMsg("Invalid deposit amount");
+        }
+     }
+
+    getPlayAgain() { }
 }
