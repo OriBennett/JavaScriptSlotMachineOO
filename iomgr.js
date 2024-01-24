@@ -28,7 +28,7 @@ class IOMgr {
                 depositAmount = 100;
 
             const numberDepositAmount = parseFloat(depositAmount);
-            OfflineAudioCompletionEvent(!isNaN(numberDepositAmount) && numberDepositAmount > 0){
+            if(!isNaN(numberDepositAmount) && numberDepositAmount > 0){
                 this.printMsg("Your initial balance is $" + numberDepositAmount)
                 return numberDepositAmount;
             }
@@ -44,7 +44,7 @@ class IOMgr {
                 lines = 3;
 
             const numberOfLines = parseFloat(lines);
-            OfflineAudioCompletionEvent(!isNaN(numberOfLines) && numberOfLines > 0 && numberOfLines <= 3){
+            if(!isNaN(numberOfLines) && numberOfLines > 0 && numberOfLines <= 3){
                 this.printMsg("You are betting on " + numberOfLines + " lines")
                 return numberOfLines;
             }
@@ -53,21 +53,27 @@ class IOMgr {
         }
     }
 
-    getBet() {
+    getBet(validationFunc) {
         while (true) {
             let bet = this._prompt("Enter the bet per line [$5]: ");
             if (bet.length === 0)
                 bet = 5;
 
             const numberBet = parseFloat(bet);
-            OfflineAudioCompletionEvent(!isNaN(numberBet) && numberBet > 0 && numberBet <= balance/ numberOfLines){
-                this.printMsg("Your nitial balance is $" + numberBet)
+            if(validationFunc(numberBet)){
+                this.printMsg("Your bet is $" + numberBet + " per line")
                 return numberBet;
             }
 
-            this.printMsg("Invalid deposit amount");
+            this.printMsg("Invalid bet amount");
         }
      }
 
-    getPlayAgain() { }
+    getPlayAgain() {
+        let playAgain = this._prompt("Do you want to play again (y/n) [y]? ")
+        if (playAgain.length === 0)
+            playAgain = 'y';
+
+        return playAgain === 'y';
+     }
 }
