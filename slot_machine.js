@@ -7,20 +7,20 @@ class SlotMachine {
     static _ROWS = 3;
     static _COLUMNS = 3;
 
-    constructor(){
+    constructor() {
 
-        this.ioMgr = new this.ioMgr.getInstance();
+        this.ioMgr = IOMgr.getInstance();
         this.board = new Board(SlotMachine._ROWS, SlotMachine._COLUMNS);
         this.accountMgr = new AccountMgr(this.board,
             this.ioMgr.getDeposit());
     }
 
-    playRound(){
+    playRound() {
         this.accountMgr.beginRound(
             this.ioMgr.getNumberOfLines(),
-            this.ioMgr.getBet((bet) => (!isNaN(bet) && bet>0 && bet<=this.accountMgr.balance/this.accountMgr.numberOfLines)),
+            this.ioMgr.getBet((bet) => (!isNaN(bet) && bet > 0 && bet <= (this.accountMgr.balance / this.accountMgr.numberOfLines))),
         )
-        
+
         this.board.spin();
         this.ioMgr.printMsg(this.board.getFormattedString());
 
@@ -28,8 +28,10 @@ class SlotMachine {
         this.ioMgr.printMsg("your profit/loss in this round is $" + roundPnl)
         this.ioMgr.printMsg("your balance is $" + this.accountMgr.balance)
     }
-    
-    isGameOver(){
 
+    isGameOver() {
+        return (this.accountMgr.balance <= 0)
     }
 }
+
+export default SlotMachine

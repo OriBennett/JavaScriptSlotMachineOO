@@ -77,3 +77,5 @@ class IOMgr {
         return playAgain === 'y';
      }
 }
+
+export default IOMgr

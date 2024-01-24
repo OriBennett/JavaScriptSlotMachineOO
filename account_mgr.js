@@ -9,7 +9,7 @@ class AccountMgr {
         D: 5
     }
 
-    constructor(balance, board) {
+    constructor(board, balance) {
         this.balance = balance;
         this.board = board;
         this.numberOfLines = 0; // improves performance of the v8 engine
