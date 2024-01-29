@@ -74,7 +74,7 @@ class IOMgr {
         if (playAgain.length === 0)
             playAgain = 'y';
 
-        return playAgain === 'y';
+        return playAgain == 'y';
      }
 }
 
