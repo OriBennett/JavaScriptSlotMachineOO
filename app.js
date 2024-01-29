@@ -4,21 +4,21 @@ import IOMgr from "./iomgr.js";
 
 class Game {
     constructor() {
-         this.ioMgr = IOMgr.getInstance();
     }
     
     start() {
-        this.slotMachine = new SlotMachine();
+        const slotMachine = new SlotMachine();
+        const ioMgr = IOMgr.getInstance();
 
         while(true){
-            this.slotMachine.playRound();
+            slotMachine.playRound();
 
-            if(this.slotMachine.isGameOver()){
-                this.ioMgr.printMsg("Game Over");
+            if(slotMachine.isGameOver()){
+                ioMgr.printMsg("Game Over");
                 break;
             }
 
-            if(!this.ioMgr.getPlayAgain())
+            if(!ioMgr.getPlayAgain())
                 break;
         }
     }
