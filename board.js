@@ -24,7 +24,7 @@ class Board{
     checkWins(lines) { 
         let res = "";
         for(let i = 0; i < lines; i++){
-            res += this.rows[i].checkWins;
+            res += this.rows[i].checkWins();
         }
         return res;
     }
