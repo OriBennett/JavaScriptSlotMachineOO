@@ -21,9 +21,11 @@ class Board{
         return res;
     }
 
-    checkWins() { // is a bug will eventually get the lines we bet on
+    checkWins(lines) { // is a bug will eventually get the lines we bet on
         let res = "";
-        this.rows.forEach(row => res += row.checkWins());
+        for(let i = 0; i < lines; i++){
+            res += this.rows[i].checkWins;
+        }
         return res;
     }
 
