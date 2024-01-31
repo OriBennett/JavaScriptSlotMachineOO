@@ -1,24 +1,21 @@
+import { createGameMachine } from "./gameFactory.js"
 import SlotMachine from "./slot_machine.js";
-import IOMgr from "./iomgr.js";
-
 
 class Game {
     constructor() {
     }
     
     start() {
-        const slotMachine = new SlotMachine();
-        const ioMgr = IOMgr.getInstance();
+        const gameMachine = createGameMachine();
 
         while(true){
-            slotMachine.playRound();
+            gameMachine.playRound();
 
-            if(slotMachine.isGameOver()){
-                ioMgr.printMsg("Game Over");
+            if(gameMachine.isGameOver()){
                 break;
             }
 
-            if(!ioMgr.getPlayAgain())
+            if(!gameMachine.getPlayAgain()) 
                 break;
         }
     }

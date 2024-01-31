@@ -1,7 +1,7 @@
+import { IGameMachine } from "./IGameMachine.js";
 import AccountMgr from "./account_mgr.js";
 import Board from "./board.js";
 import IOMgr from "./iomgr.js";
-
 
 class SlotMachine {
     static _ROWS = 3;
@@ -30,7 +30,15 @@ class SlotMachine {
     }
 
     isGameOver() {
-        return (this.accountMgr.balance <= 0)
+        if(this.accountMgr.balance <= 0){
+            this.ioMgr.printMsg("Game Over")
+            return true;
+        }
+        return false
+    }
+
+    getPlayAgain(){
+        return this.ioMgr.getPlayAgain();
     }
 }
 
