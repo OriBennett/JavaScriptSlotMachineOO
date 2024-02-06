@@ -25,11 +25,13 @@ class Board{
     }
     // Updated getFormattedString method to return a string representation of the two-dimensional array
 
-    checkWins() { 
+    checkWins(numberOfLines) { 
         let res = "";
         let winCheckers = WinCheckerFactory.CreateWinChecker();
-        winCheckers.forEach(winChecker => {
-            res += winChecker.CheckWins(this);
+        winCheckers.forEach((winChecker, index) => {
+            if (index < numberOfLines) {
+                res += winChecker.CheckWins(this);
+            }
         });
         return res;
     }
