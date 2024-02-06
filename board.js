@@ -1,4 +1,5 @@
 import SymbolPack from "./SymbolPack.js";
+import IWinChecker from "./IWinChecker.js";
 
 class Board{
     constructor(rowsNum, columnsNum) {
