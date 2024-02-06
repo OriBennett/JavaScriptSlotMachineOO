@@ -1,6 +1,6 @@
-// IWinChecker import removed
-
 import IWinChecker from "./IWinChecker.js";
+
+// IWinChecker import removed
 
 class RowWinChecker extends IWinChecker {
     CheckWins(board) {
