@@ -10,6 +10,7 @@ class SlotMachine {
     constructor() {
 
         this.ioMgr = IOMgr.getInstance();
+        this.numberOfLines = new Number();
         this.board = new Board(SlotMachine._ROWS, SlotMachine._COLUMNS);
         this.accountMgr = new AccountMgr(this.board,
             this.ioMgr.getDeposit());
@@ -17,8 +18,8 @@ class SlotMachine {
 
     playRound() {
         this.accountMgr.beginRound(
-            this.ioMgr.getNumberOfLines(),
-            this.ioMgr.getBet((bet) => (!isNaN(bet) && bet > 0 && bet <= (this.accountMgr.balance / this.accountMgr.numberOfLines))),
+            this.numberOfLines = this.ioMgr.getNumberOfLines(),
+            this.ioMgr.getBet((bet) => (!isNaN(bet) && bet > 0 && bet <= (this.accountMgr.balance / this.numberOfLines))),
         )
 
         this.board.spin();

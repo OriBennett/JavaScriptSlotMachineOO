@@ -1,8 +1,5 @@
-import WinCheckerFactory from "./IWinChecker.js";
 
-// IWinChecker import removed
-
-class RowWinChecker extends IWinChecker {
+class RowWinChecker {
     CheckWins(board) {
         let res = "";
         for(let i = 0; i < board.rowsNum; i++){

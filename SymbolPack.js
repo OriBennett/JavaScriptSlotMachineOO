@@ -27,13 +27,13 @@ class SymbolPack{
         }
 
     static getSymbolDollarValue(symbol) {
-        const symbolValues = {
-            A: 1,
-            B: 2,
-            C: 3,
-            D: 4
-        };
-        return symbolValues[symbol];
+        const _SYMBOL_VALUES = {
+            A: 20,
+            B: 15,
+            C: 10,
+            D: 5
+        }
+        return _SYMBOL_VALUES[symbol];
     }
 
     getXRandomSymbols(columnsNum){
