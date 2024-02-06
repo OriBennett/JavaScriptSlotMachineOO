@@ -1,3 +1,5 @@
+// IWinChecker import removed
+
 import IWinChecker from "./IWinChecker.js";
 
 class ColWinChecker extends IWinChecker {
