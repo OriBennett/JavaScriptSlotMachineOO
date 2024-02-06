@@ -14,7 +14,4 @@ class RowWinChecker extends IWinChecker {
     }
 }
 
-export default RowWinChecker;
-    static CreateWinChecker() {
-        return new RowWinChecker();
-    }
+export default RowWinChecker
