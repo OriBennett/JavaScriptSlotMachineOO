@@ -1,5 +1,5 @@
 import SymbolPack from "./SymbolPack.js";
-import IWinChecker from "./IWinChecker.js";
+import WinCheckerFactory from "./IWinChecker.js";
 
 class Board{
     constructor(rowsNum, columnsNum) {
@@ -27,7 +27,7 @@ class Board{
 
     checkWins() { 
         let res = "";
-        let winCheckers = IWinChecker.CreateWinChecker();
+        let winCheckers = WinCheckerFactory.CreateWinChecker();
         winCheckers.forEach(winChecker => {
             res += winChecker.CheckWins(this);
         });

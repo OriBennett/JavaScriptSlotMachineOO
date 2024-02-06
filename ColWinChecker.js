@@ -1,4 +1,4 @@
-import IWinChecker from "./IWinChecker.js";
+import WinCheckerFactory from "./IWinChecker.js";
 
 // IWinChecker import removed
 
