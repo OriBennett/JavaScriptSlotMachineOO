@@ -4,7 +4,7 @@ class IWinChecker {
     }
 
     static CreateWinChecker() {
-        throw new Error('You have to implement the method CreateWinChecker!');
+        return [new RowWinChecker(), new ColWinChecker()];
     }
 }
 

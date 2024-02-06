@@ -15,3 +15,6 @@ class ColWinChecker extends IWinChecker {
 }
 
 export default ColWinChecker;
+    static CreateWinChecker() {
+        return new ColWinChecker();
+    }

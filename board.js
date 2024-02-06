@@ -24,15 +24,12 @@ class Board{
     }
     // Updated getFormattedString method to return a string representation of the two-dimensional array
 
-    checkWins(lines) { 
+    checkWins() { 
         let res = "";
-        for(let i = 0; i < lines; i++){
-            let row = this.rows[i];
-            let firstSymbol = row[0];
-            if (row.every(symbol => symbol === firstSymbol)) {
-                res += firstSymbol;
-            }
-        }
+        let winCheckers = IWinChecker.CreateWinChecker();
+        winCheckers.forEach(winChecker => {
+            res += winChecker.CheckWins(this);
+        });
         return res;
     }
     // Updated checkWins method to check for wins in the two-dimensional array
