@@ -7,15 +7,16 @@ class SymbolPack{
     }
 
     constructor() {
-        if (SymbolPack.instance) {
-            return SymbolPack.instance;
-        }
-        SymbolPack._symbols = [];
-        for (const [symbol, count] of Object.entries(SymbolPack._SYMBOLS_COUNT)) {
-            for (let i = 0; i < count; i++) {
-                SymbolPack._symbols.push(symbol);
+        if (!SymbolPack.instance) {
+            SymbolPack.instance = this;
+            this._symbols = [];
+            for (const [symbol, count] of Object.entries(SymbolPack._SYMBOLS_COUNT)) {
+                for (let i = 0; i < count; i++) {
+                    this._symbols.push(symbol);
+                }
             }
         }
+        return SymbolPack.instance;
     }
 
     static _SYMBOLS_COUNT = {
@@ -25,10 +26,18 @@ class SymbolPack{
             D: 80
         }
 
-    static getSymbolDollarValue(symbol) {}
+    static getSymbolDollarValue(symbol) {
+        const symbolValues = {
+            A: 1,
+            B: 2,
+            C: 3,
+            D: 4
+        };
+        return symbolValues[symbol];
+    }
 
-    static getXRandomSymbols(columnsNum){
-        const rowSymbols = [...SymbolPack._symbols];
+    getXRandomSymbols(columnsNum){
+        const rowSymbols = [...this._symbols];
         return Array.from({length: columnsNum}, () => {
                 const randomIndex = Math.floor(Math.random() * rowSymbols.length);
                 return rowSymbols.splice(randomIndex, 1)[0];
