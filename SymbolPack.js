@@ -1,3 +1,4 @@
+import Symbol from "./Symbol.js";
 class SymbolPack{
     static getInstance() {
         if (!SymbolPack.instance) {
@@ -6,17 +7,11 @@ class SymbolPack{
         return SymbolPack.instance;
     }
 
-    constructor() {
-        if (!SymbolPack.instance) {
-            SymbolPack.instance = this;
-            this._symbols = [];
-            for (const [symbol, count] of Object.entries(SymbolPack._SYMBOLS_COUNT)) {
-                for (let i = 0; i < count; i++) {
-                    this._symbols.push(symbol);
-                }
-            }
-        }
-        return SymbolPack.instance;
+    static _SYMBOL_OBJECTS = {
+        A: new Symbol("A","🍌", "Banana"),
+        B: new Symbol("B","🍓", "Strawberry"),
+        C: new Symbol("C","🍇", "Grapes"),
+        D: new Symbol("D","🍏", "Apple"),
     }
 
     static _SYMBOLS_COUNT = {
@@ -25,6 +20,18 @@ class SymbolPack{
             C: 60,
             D: 80
         }
+    constructor() {
+        if (!SymbolPack.instance) {
+            SymbolPack.instance = this;
+            this._symbols = [];
+            for (const [symbol, count] of Object.entries(SymbolPack._SYMBOLS_COUNT)) {
+                for (let i = 0; i < count; i++) {
+                    this._symbols.push(SymbolPack._SYMBOL_OBJECTS[symbol]);
+                }
+            }
+        }
+        return SymbolPack.instance;
+    }
 
     static getSymbolDollarValue(symbol) {
         const _SYMBOL_VALUES = {

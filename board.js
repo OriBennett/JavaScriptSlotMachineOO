@@ -1,5 +1,6 @@
 import SymbolPack from "./SymbolPack.js";
 import WinCheckerFactory from "./IWinChecker.js";
+import Symbol from "./Symbol.js";
 
 class Board{
     constructor(rowsNum, columnsNum) {
@@ -20,7 +21,7 @@ class Board{
 
     getFormattedString(){
         let res = "";
-        this.rows.forEach(row => res += row.join(" | ") + "\n");
+        this.rows.forEach(row => res += row.map((symbol) => symbol.displayValue).join(" | ") + "\n");
         return res;
     }
     // Updated getFormattedString method to return a string representation of the two-dimensional array
@@ -33,6 +34,7 @@ class Board{
                 res += winChecker.CheckWins(this);
             }
         });
+        // if (res.length !== 0)  bug?
         return res;
     }
     // Updated checkWins method to check for wins in the two-dimensional array
