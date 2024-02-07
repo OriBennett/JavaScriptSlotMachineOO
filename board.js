@@ -19,7 +19,7 @@ class Board{
     }
     // Updated spin method to fill the two-dimensional array with random symbols
 
-    getFormattedString(){
+    getFormattedString(){ // change this so that it checks the local runtime to see if it supports emojis and returns emojis if yes and logical values if not, use factory
         let res = "";
         this.rows.forEach(row => res += row.map((symbol) => symbol.displayValue).join(" | ") + "\n");
         return res;
